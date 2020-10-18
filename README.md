@@ -21,97 +21,35 @@ ___
 ## Description
 This week’s homework project was to use JavaScript to generate a randomn password. Once the button is pressed it prompts user to chose a password length between 8 and 128 characterss. Next the user must confirm if they'd like combinaiton lowercase, uppercase, numeric, and/or special characters. After the user runs through all the prompts a password will be genertated and dispayed on the browser window. The user has the option to press the button again and run through the prompts and issued a new password. 
 
+I created a function to check the requested length to ensure it is within desired range. If the user chooses a number lower than 8 or higher than 128, then the page will prompt the user to pick a new number. 
 
-
- you to create an application that an employee can use to generate a random password based on criteria they’ve selected by modifying starter code. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished user interface that is responsive, ensuring that it adapts to multiple screen sizes.
-
-The password can include special characters. If you’re unfamiliar with these, see this [list of Password Special Characters from the OWASP Foundation](https://www.owasp.org/index.php/Password_special_characters).
-
---
-
-## User Story
-
+I  created a function to ensure the user confirmed at minimum one option was chosen in the promtps. If the user choses 'cancel' on all prompts then they will be reprompted to choose at least one type of characters:
 ```
-AS AN employee with access to sensitive data
-I WANT to randomly generate a password that meets certain criteria
-SO THAT I can create a strong password that provides greater security
-```
-
-## Acceptance Criteria
-
-```
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN prompted for character types to include in the password
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
+    function checkForResponse() {
+      while(lowerCase === false && upperCase === false && numbers === false && special === false){
+        alert("please choose at least one type of character.");
+        lowerCase = confirm("Would you like lower case letters?");
+        upperCase = confirm("Would you like upper case letters?");
+        numbers = confirm("Would you like numbers?");
+        special = confirm("Would you liek special characters?");
+      };
+    };
 ```
 
-## Mock-Up
+After running through prompts the password will run through a loop to check ff it is missing an element. If it does not, then it will clear the password and loop again until are desired elements are there (case, number, character)
+```
+  if (lowerCase === true){
+    lowerPref = passwordLetters.some(char => checkOptions(char,lowerCharactersArray));
+  }else {lowerPref = true}
+```
 
-The following image shows the web application's appearance and functionality:
+<hr>
 
-![password generator demo](./Assets/03-javascript-homework-demo.png)
+## Learnings
 
-## Grading Requirements
+I had a hard time with this, and relied on study groups to help me piece this together. I had to use resource time hours to help me with this and found the code to be too commplicated and I'd like to look back and try and simplify down the road. 
 
-This homework is graded based on the following criteria: 
+<hr>
 
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-  * The homework should not produce any errors in the console when you inspect it using Chrome DevTools.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the homework instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+Copyright (c) 2020 Dane Wesley Skidmore
 
