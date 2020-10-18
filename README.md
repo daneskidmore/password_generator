@@ -4,8 +4,11 @@
 ## Installation 
 ----
 Deployment: 
+https://daneskidmore.github.io/password_generator/
 
 GitHub:
+
+https://github.com/daneskidmore/password_generator.git
 ___
 
 ## Technology Used
